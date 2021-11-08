@@ -70,7 +70,7 @@
 
         </Style>
 
-        <SolidColorBrush x:Key="PrimaryBlueColor" Color="Orange"/>
+        <SolidColorBrush x:Key="PrimaryBlueColor" Color="blue"/>
         <SolidColorBrush x:Key="PrimaryTextColor" Color="#FFFFFF"/>
         <SolidColorBrush x:Key="BtnMouseOverColor" Color="OrangeRed"/>
         <SolidColorBrush x:Key="BtnPessedTextColor" Color="#FFF76E3C"/>
