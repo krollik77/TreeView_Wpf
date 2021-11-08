@@ -125,6 +125,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
         <Border Grid.ColumnSpan="2" CornerRadius="10" BorderBrush="Blue" Margin="10" BorderThickness="2" />
       
         <!--#region // Menu TreeView //-->
@@ -132,9 +133,13 @@
 
         <Grid Grid.Column="0"
               Margin="30">
-            
-            <TreeView Margin="5,0,-5,0">
-                <TreeViewItem Header="Уровень 1" IsExpanded="False">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="5,0,-5,0">
+                <TreeView >
+                    <TreeViewItem Header="Уровень 1" IsExpanded="False">
 
                     <StackPanel Orientation="Horizontal"
                                 Width="260"
@@ -171,18 +176,18 @@
 
                 </TreeViewItem>
 
-                <TreeViewItem Header="Уровень 2" IsExpanded="False">
+                    <TreeViewItem Header="Уровень 2" IsExpanded="False">
                     <TreeViewItem Header="Генерация импульса" />
                     <TreeViewItem Header="Источник питания" />
                     <TreeViewItem Header="Коммутация" />
                     <TreeViewItem Header="Измерение - осциллограф" />
                     <TreeViewItem Header="Измерение - анализатор спекта" />
                 </TreeViewItem>
-                <TreeViewItem Header="Уровень 3" IsExpanded="True">
+                    <TreeViewItem Header="Уровень 3" IsExpanded="True">
                     <StackPanel Orientation="Horizontal" Margin="0 2">
                         <TextBlock Text="Генерация импульса"
                                    HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center" />
+                                   VerticalAlignment="Center" MouseDown="TextBlock_MouseDown" />
                         <Button Margin="67,0,0,0"
                                 HorizontalAlignment="Right" 
                                 Content="Add"
@@ -195,7 +200,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0 2" >
                         <TextBlock Text="Источник питания"
                                    HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center" />
+                                   VerticalAlignment="Center"  MouseDown="TextBlock_MouseDown_1" />
                         <Button Margin="80,0,0,0"
                                 HorizontalAlignment="Right" 
                                 Content="Add"
@@ -244,10 +249,26 @@
                                 Style="{StaticResource OrangeBTNStile}"/>
                     </StackPanel>
                 </TreeViewItem>
-               
+                </TreeView>
+            </Grid>
+            <Grid Grid.Row="1">
+                <GroupBox
+                 Header="Описание:"
+                 Margin="2 15">
 
+                    <Grid Width="600">
+                        <TextBlock x:Name="First" 
+                                   Text="Генерация импульса. Подключите генератор в розетку и нажмите кноку Вкл. "
+                                   Visibility="Hidden" VerticalAlignment="Top" FontSize="10"/>
+                 
+                        <TextBlock x:Name="Second" 
+                                   Text="Источник питания. Сходи в холодильник и  дастань себе еду. Если еды нет закажи доставку из магазина. "
+                                   Visibility="Hidden"/>
+                    </Grid>
 
-            </TreeView>
+                </GroupBox>
+            </Grid>
+            
         </Grid>
         <!--#endregion-->
 
