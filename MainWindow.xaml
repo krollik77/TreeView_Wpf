@@ -251,19 +251,24 @@
                 </TreeViewItem>
                 </TreeView>
             </Grid>
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1"
+                  >
                 <GroupBox
                  Header="Описание:"
                  Margin="2 15">
 
-                    <Grid Width="600">
+                    <Grid Width="auto"
+                          Height="50" VerticalAlignment="Top"
+                          >
                         <TextBlock x:Name="First" 
-                                   Text="Генерация импульса. Подключите генератор в розетку и нажмите кноку Вкл. "
-                                   Visibility="Hidden" VerticalAlignment="Top" FontSize="10"/>
+                                    Text="Генерация импульса. Подключите генератор в розетку и нажмите кноку Вкл. "
+                                   Visibility="Visible" VerticalAlignment="Top" FontSize="10"
+                                   TextWrapping="Wrap"/>
                  
                         <TextBlock x:Name="Second" 
                                    Text="Источник питания. Сходи в холодильник и  дастань себе еду. Если еды нет закажи доставку из магазина. "
-                                   Visibility="Hidden"/>
+                                   Visibility="Hidden"
+                                   TextWrapping="Wrap"/>
                     </Grid>
 
                 </GroupBox>
@@ -276,27 +281,148 @@
         <Grid Grid.Column="1"
               Margin="30">
 
-            <Grid Height="132" Width="190" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 10 0 0">
-                <StackPanel Orientation="Vertical">
-                    <Button Style="{StaticResource PanelComboBoxBtn}">
-                        <TextBlock Text="Button"/>
-                    </Button>
-                    <Button Style="{StaticResource PanelComboBoxBtn}">
-                        <TextBlock Text="Button"/>
-                    </Button>
-                    <Button Style="{StaticResource PanelComboBoxBtn}">
-                        <TextBlock Text="Button"/>
-                    </Button>
-                    <Button Style="{StaticResource PanelComboBoxBtn}">
-                        <TextBlock Text="Button"/>
-                        
-                    </Button>
-                    <Polygon Fill="White" Points="0, 3, 190, 3" StrokeThickness="1" Stroke="#FF12827D"/>
-                    <Button Style="{StaticResource PanelComboBoxBtn}" Margin="0 3 0 0">
-                        <TextBlock Text="Button"/>
-                    </Button>
-                </StackPanel>
+            
+         
+                <Grid Grid.Row="0" Margin="5,0,-5,0">
+                    <TreeView >
+                        <TreeViewItem Header="Уровень 1" IsExpanded="False">
+
+                            <StackPanel Orientation="Horizontal"
+                                Width="260"
+                                Height="auto">
+                                <TreeViewItem Header="Генерация импульса" HorizontalAlignment="Left"/>
+                                <Button Margin="67,0,0,0" HorizontalAlignment="Right">Add</Button>
+                                <Button HorizontalAlignment="Right" Margin="4,0,0,0">Add</Button>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Width="260">
+                                <TreeViewItem Header="Источник питания" IsExpanded="True"/>
+                                <Button Margin="80,0,0,0" HorizontalAlignment="Right">Add</Button>
+                                <Button HorizontalAlignment="Right" Margin="4,0,0,0">Add</Button>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Width="260" HorizontalAlignment="Right">
+                                <TreeViewItem Header="Источник питания" IsExpanded="True"/>
+                                <Button Margin="80,0,0,0" HorizontalAlignment="Right" >Add</Button>
+                                <Button HorizontalAlignment="Right" Margin="4,0,0,0">Add</Button>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Width="260">
+                                <TreeViewItem Header="Коммутация" />
+                                <Button Margin="113,0,0,0" HorizontalAlignment="Right">Add</Button>
+                                <Button HorizontalAlignment="Right" Margin="4,0,0,0">Add</Button>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Width="260">
+                                <TreeViewItem Header="Измерение - осциллограф"  IsExpanded="True"/>
+                                <Button Margin="35,0,0,0" HorizontalAlignment="Right">Add</Button>
+                                <Button HorizontalAlignment="Right" Margin="4,0,0,0">Add</Button>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Width="260">
+                                <TreeViewItem Header="Измерение - анализатор спекта" />
+                                <Button Margin="5,0,0,0" HorizontalAlignment="Right">Add</Button>
+                                <Button HorizontalAlignment="Right" Margin="4,0,0,0">Add</Button>
+                            </StackPanel>
+
+                        </TreeViewItem>
+
+                        <TreeViewItem Header="Уровень 2" IsExpanded="False">
+                            <TreeViewItem Header="Генерация импульса" />
+                            <TreeViewItem Header="Источник питания" />
+                            <TreeViewItem Header="Коммутация" />
+                            <TreeViewItem Header="Измерение - осциллограф" />
+                            <TreeViewItem Header="Измерение - анализатор спекта" />
+                        </TreeViewItem>
+                        <TreeViewItem Header="Уровень 3" IsExpanded="True">
+                            <StackPanel Orientation="Horizontal" Margin="0 2">
+                                <TextBlock Text="Генерация импульса"
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center" MouseDown="TextBlock_MouseDown" />
+                                <Button Margin="67,0,0,0"
+                                HorizontalAlignment="Right" 
+                                Content="Add"
+                                Style="{StaticResource OrangeBTNStile}"/>
+                                <Button HorizontalAlignment="Right" 
+                                Margin="4,0,0,0" 
+                                Content="Delete"
+                                Style="{StaticResource OrangeBTNStile}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 2" >
+                                <TextBlock Text="Источник питания"
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"  MouseDown="TextBlock_MouseDown_1" />
+                                <Button Margin="80,0,0,0"
+                                HorizontalAlignment="Right" 
+                                Content="Add"
+                                Style="{StaticResource OrangeBTNStile}"/>
+                                <Button HorizontalAlignment="Right" 
+                                Margin="4,0,0,0" 
+                                Content="Delete"
+                                Style="{StaticResource OrangeBTNStile}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 2">
+
+                                <TextBlock Text="Коммутация" 
+                                   HorizontalAlignment="Left" 
+                                   VerticalAlignment="Center" />
+                                <Button Margin="113,0,0,0"
+                                HorizontalAlignment="Right" 
+                                Content="Add"
+                                Style="{StaticResource OrangeBTNStile}"/>
+                                <Button 
+                                Margin="4,0,0,0" 
+                                Content="Delete"
+                                Style="{StaticResource OrangeBTNStile}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 2">
+                                <TextBlock Text="Измерение - осциллограф"
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center" />
+                                <Button Margin="35,0,0,0"
+                                HorizontalAlignment="Right" 
+                                Content="Add"
+                                Style="{StaticResource OrangeBTNStile}"/>
+                                <Button HorizontalAlignment="Right" 
+                                Margin="4,0,0,0" 
+                                Content="Delete"
+                                Style="{StaticResource OrangeBTNStile}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 2" >
+                                <TextBlock Text="Измерение - анализатор спекта" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <Button Margin="5,0,0,0"
+                                HorizontalAlignment="Right" 
+                                Content="Add"
+                                Style="{StaticResource OrangeBTNStile}"/>
+                                <Button HorizontalAlignment="Right" 
+                                Margin="4,0,0,0" 
+                                Content="Delete"
+                                Style="{StaticResource OrangeBTNStile}"/>
+                            </StackPanel>
+                        </TreeViewItem>
+                    </TreeView>
+                <GroupBox Header="Описание:"
+                          Margin="2 15" 
+                          VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                          
+                          
+                          >
+
+                    <Grid Width="auto"
+                          Height="50">
+                        <TextBlock x:Name="First_" 
+                                   Text="Генерация импульса. Подключите генератор в розетку и нажмите кноку Вкл. "
+                                   Visibility="Hidden" VerticalAlignment="Top" FontSize="10"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock x:Name="Second_" 
+                                   Text="Источник питания. Сходи в холодильник и  дастань себе еду. Если еды нет закажи доставку из магазина. "
+                                   Visibility="Visible"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Left"/>
+                    </Grid>
+
+                </GroupBox>
             </Grid>
+               
+
         </Grid>
+            <!--#endregion-->
+        
     </Grid>
 </Window>
