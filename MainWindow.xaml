@@ -232,17 +232,17 @@
                                 Content="Delete"
                                 Style="{StaticResource OrangeBTNStile}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0 2" >
+                    <Canvas Margin="0 2" Width="280" >
                         <TextBlock Text="Измерение - анализатор спекта" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        <Button Margin="5,0,0,0"
+                        <Button Canvas.Right="60" Margin="5,0,0,0"
                                 HorizontalAlignment="Right" 
                                 Content="Add"
                                 Style="{StaticResource OrangeBTNStile}"/>
-                        <Button HorizontalAlignment="Right" 
+                        <Button Canvas.Right="2" HorizontalAlignment="Right" 
                                 Margin="4,0,0,0" 
                                 Content="Delete"
                                 Style="{StaticResource OrangeBTNStile}"/>
-                    </StackPanel>
+                    </Canvas>
                 </TreeViewItem>
                
 
