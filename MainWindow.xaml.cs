@@ -41,20 +41,20 @@ namespace TreeView_Wpf
         //        Second.Visibility = Visibility.Hidden;
         //}
 
-        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (First.Visibility == Visibility.Hidden)
-                First.Visibility = Visibility.Visible;
-            else
-                First.Visibility = Visibility.Hidden;
-        }
+        //private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    if (First.Visibility == Visibility.Hidden)
+        //        First.Visibility = Visibility.Visible;
+        //    else
+        //        First.Visibility = Visibility.Hidden;
+        //}
 
-        private void TextBlock_MouseDown_1(object sender, MouseButtonEventArgs e)
-        {
-            if (Second.Visibility == Visibility.Hidden)
-                Second.Visibility = Visibility.Visible;
-            else
-                Second.Visibility = Visibility.Hidden;
-        }
+        //private void TextBlock_MouseDown_1(object sender, MouseButtonEventArgs e)
+        //{
+        //    if (Second.Visibility == Visibility.Hidden)
+        //        Second.Visibility = Visibility.Visible;
+        //    else
+        //        Second.Visibility = Visibility.Hidden;
+        //}
     }
 }

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TreeView_Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="650" Width="800">
     <Window.Resources>
-         <!--region Style для TreeView-->
+        <!--region Style для TreeView-->
         <Style TargetType="{x:Type TreeView}">
             <Style.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF82B0FB" Opacity="0.4" />
@@ -92,6 +92,180 @@
         </Style>
 <!--endregion-->
 
+        <!--region Стиль для кнопки внутри ComboBox -->
+        <Style x:Key="PanelExitMiniMaxiBtn" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Background" Value="#FFDCDFED"/>
+            <Setter Property="Height" Value="25"/>
+
+            <Setter Property="Foreground" Value="Black"/>
+
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="1" BorderBrush="{x:Null}" CornerRadius="5"
+                                Background="{TemplateBinding Background}" HorizontalAlignment="Right" Margin="2 0 0 0">
+                            <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Center" Margin="3"/>
+
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Триггер для изменения цвета кнопки при наведении-->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFBCBECC"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--endregion-->
+
+        <!--region Стиль для кнопки EXIT внутри ComboBox  -->
+        <Style x:Key="PanelExitBtn" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Background" Value="#FFDCDFED"/>
+            <Setter Property="Height" Value="25"/>
+
+            <Setter Property="Foreground" Value="Black"/>
+
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="1" BorderBrush="White" CornerRadius="5"
+                                Background="{TemplateBinding Background}" HorizontalAlignment="Right" Margin="2 0 0 0">
+                            <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Center" Margin="3"/>
+
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Триггер для изменения цвета кнопки при наведении-->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.6"/>
+                                <Setter Property="Background" Value="Red"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--endregion-->
+
+
+        
+        
+
+        <!--<Style x:Key="{x:Type ListView}"
+       TargetType="ListView">
+            <Setter Property="SnapsToDevicePixels"
+          Value="true" />
+            <Setter Property="OverridesDefaultStyle"
+          Value="true" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+          Value="Auto" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+          Value="Auto" />
+            <Setter Property="ScrollViewer.CanContentScroll"
+          Value="true" />
+            <Setter Property="VerticalContentAlignment"
+          Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListView">
+                        <Border Name="Border"
+                BorderThickness="1">
+                            <Border.Background>
+                                <SolidColorBrush Color="Green" />
+                            </Border.Background>
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="Yellow" />
+                            </Border.BorderBrush>
+                            <ScrollViewer Style="{DynamicResource
+                        {x:Static GridView.GridViewScrollViewerStyleKey}}">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsGrouping"
+                   Value="true">
+                                <Setter Property="ScrollViewer.CanContentScroll"
+                    Value="false" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled"
+                   Value="false">
+                                <Setter TargetName="Border"
+                    Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{DynamicResource DisabledBorderLightColor}" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="{x:Type ListViewItem}"
+       TargetType="ListViewItem">
+            <Setter Property="SnapsToDevicePixels"
+          Value="true" />
+            <Setter Property="OverridesDefaultStyle"
+          Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="Border"
+                Padding="2"
+                SnapsToDevicePixels="true"
+                Background="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver" />
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected" />
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).
+                    (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                                         Value="Red" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedUnfocused">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).
+                    (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                                         Value="#FF211AA9" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>-->
+
+
+
+
+      
+
+        
+        
+        
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -104,152 +278,249 @@
         <!--#region // Menu TreeView //-->
         <Border Grid.Column="0" CornerRadius="0 10 10 0" BorderBrush="Blue" Margin="20 20 10 20" BorderThickness="2" />
 
-        <Grid Grid.Column="0"
+        
+            <!--#REGION  ПравАЯ панель Настройки Тестов _ Test Steps -->
+        <Grid 
+              Grid.Column="0"
               Margin="30">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Margin="5,0,-5,0">
-                <TreeView >
-                    <TreeViewItem Header="Уровень 1" IsExpanded="False">
+            <Border Name="PlanSettings"  Background="White" CornerRadius="5" Margin="2 4 4 4" Visibility="Visible">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="582*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Width="auto" CornerRadius="5 5 0 0" Background="#FFDCDFED">
+                            <StackPanel Margin="5, 0, 0, 0" HorizontalAlignment="Left">
+                                <TextBlock Text="Настройка тэста" Foreground="#FF5C9BFA" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 5" FontFamily="Microsoft YaHei UI"/>
+                            </StackPanel>
+                        </Border>
 
-                    <StackPanel Orientation="Horizontal"
-                                Width="260"
-                                Height="auto">
-                        <TreeViewItem Header="Генерация импульса" HorizontalAlignment="Left"/>
-                        <Button Margin="67,0,0,0" HorizontalAlignment="Right">Add</Button>
-                        <Button HorizontalAlignment="Right" Margin="4,0,0,0">Add</Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Width="260">
-                        <TreeViewItem Header="Источник питания" IsExpanded="True"/>
-                        <Button Margin="80,0,0,0" HorizontalAlignment="Right">Add</Button>
-                        <Button HorizontalAlignment="Right" Margin="4,0,0,0">Add</Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Width="260" HorizontalAlignment="Right">
-                        <TreeViewItem Header="Источник питания" IsExpanded="True"/>
-                        <Button Margin="80,0,0,0" HorizontalAlignment="Right" >Add</Button>
-                        <Button HorizontalAlignment="Right" Margin="4,0,0,0">Add</Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Width="260">
-                        <TreeViewItem Header="Коммутация" />
-                        <Button Margin="113,0,0,0" HorizontalAlignment="Right">Add</Button>
-                        <Button HorizontalAlignment="Right" Margin="4,0,0,0">Add</Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Width="260">
-                        <TreeViewItem Header="Измерение - осциллограф"  IsExpanded="True"/>
-                        <Button Margin="35,0,0,0" HorizontalAlignment="Right">Add</Button>
-                        <Button HorizontalAlignment="Right" Margin="4,0,0,0">Add</Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Width="260">
-                        <TreeViewItem Header="Измерение - анализатор спекта" />
-                        <Button Margin="5,0,0,0" HorizontalAlignment="Right">Add</Button>
-                        <Button HorizontalAlignment="Right" Margin="4,0,0,0">Add</Button>
-                    </StackPanel>
+                        <!-- region кнопка ? и закрытия окна-->
+                        <Grid Name="btnClose_3" Grid.Row="0" >
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Name="Question_3" Margin="4 0 0 0" Style="{StaticResource PanelExitMiniMaxiBtn}">
 
-                </TreeViewItem>
+                                    <TextBlock Text=" ? " FontWeight="Bold"/>
+                                </Button>
+                                <Button Name="Exit_3" 
+                                        Style="{StaticResource PanelExitBtn}"
+                                        Content=" X "    >
+                                    
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                        <!-- endregion кнопка ? и закрытия окна-->
+                        <!--// Menu TreeView //-->
+                    <!--<Frame x:Name="MyFrame" 
+                           Grid.Row="2"
+                           Background="Azure" Margin="2"
+                           NavigationUIVisibility="Hidden">
 
-                    <TreeViewItem Header="Уровень 2" IsExpanded="False">
-                    <TreeViewItem Header="Генерация импульса" />
-                    <TreeViewItem Header="Источник питания" />
-                    <TreeViewItem Header="Коммутация" />
-                    <TreeViewItem Header="Измерение - осциллограф" />
-                    <TreeViewItem Header="Измерение - анализатор спекта" />
-                </TreeViewItem>
-                    <TreeViewItem Header="Уровень 3" IsExpanded="True">
-                    <StackPanel Orientation="Horizontal" Margin="0 2">
-                        <TextBlock Text="Генерация импульса"
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center" MouseDown="TextBlock_MouseDown" />
-                        <Button Margin="67,0,0,0"
-                                HorizontalAlignment="Right" 
-                                Content="Add"
-                                Style="{StaticResource OrangeBTNStile}"/>
-                        <Button HorizontalAlignment="Right" 
-                                Margin="4,0,0,0" 
-                                Content="Delete"
-                                Style="{StaticResource OrangeBTNStile}"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0 2" >
-                        <TextBlock Text="Источник питания"
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"  MouseDown="TextBlock_MouseDown_1" />
-                        <Button Margin="80,0,0,0"
-                                HorizontalAlignment="Right" 
-                                Content="Add"
-                                Style="{StaticResource OrangeBTNStile}"/>
-                        <Button HorizontalAlignment="Right" 
-                                Margin="4,0,0,0" 
-                                Content="Delete"
-                                Style="{StaticResource OrangeBTNStile}"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0 2">
+                    </Frame>-->
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="205*"/>
+                        </Grid.ColumnDefinitions>
+                        <ListView x:Name="Page1"
+                               MinWidth="325"
+                              
+                               Grid.Row="1" 
+                                  Grid.ColumnSpan="2"
+                               >
+                           
+                            <ListViewItem >
+                                <StackPanel Orientation="Horizontal" Height="30" MinWidth="315" >
+                                    <TextBlock Grid.Column="0" Margin="10 0" Text="Enabled" VerticalAlignment="Center"/>
+                                
+                                    <CheckBox Grid.Column="1" Margin="5 0" VerticalAlignment="Center"/>
+                                </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem>
+                                <StackPanel  Orientation="Horizontal" Height="30" MinWidth="315">
+                                <TextBlock Margin="10 0" Text="Имя" VerticalAlignment="Center"/>
+                                <TextBox Width="Auto" 
+                                     Margin="5 0" 
+                                     VerticalAlignment="Center"
+                                     Text="Первый тест"/>
+                            </StackPanel>
+                        </ListViewItem>
+                            <ListViewItem>
+                                <GridView>
+                                    <GridViewColumn  Width="120" >
+                                        <TextBlock Margin="10 0" Text="Имя" VerticalAlignment="Center"/>
+                                    </GridViewColumn>
+                                    <GridViewColumn  Width="120" >
+                                        <TextBlock Margin="10 0" Text="Имя" VerticalAlignment="Center"/>
+                                    </GridViewColumn>
+                                    
+                                </GridView>
+                            </ListViewItem>
+                            <ListViewItem>
+                                <DockPanel   Height="30" MinWidth="315"
+                                             MaxWidth="330" HorizontalAlignment="Stretch">
+                                    <TextBlock DockPanel.Dock="Left" Margin="10 0" Text="Имя" VerticalAlignment="Center"/>
+                                <TextBox Width="Auto" 
+                                     Margin="5 0" 
+                                     VerticalAlignment="Center"
+                                     Text="Первый тест"/>
+                            </DockPanel>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <StackPanel Orientation="Horizontal" Height="30" Width="200">
+                                <TextBlock Margin="10 0" Text="Enabled" VerticalAlignment="Center"/>
+                                <CheckBox Margin="5 0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <StackPanel Orientation="Horizontal" Height="30" >
+                                <TextBlock Margin="10 0" Text="Enabled" VerticalAlignment="Center"/>
+                                <Expander
+                                HorizontalAlignment="Stretch"
+                                Header="Expander Example 1a"
+                                Foreground="BlueViolet"
+                                    ExpandDirection="Right">
+                                    <StackPanel Orientation="Vertical" >
+                                        <TextBlock Text="Your Content" Foreground="BlueViolet"/>
+                                        <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                               Foreground="BlueViolet"
+                                               TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </Expander>
 
-                        <TextBlock Text="Коммутация" 
-                                   HorizontalAlignment="Left" 
-                                   VerticalAlignment="Center" />
-                        <Button Margin="113,0,0,0"
-                                HorizontalAlignment="Right" 
-                                Content="Add"
-                                Style="{StaticResource OrangeBTNStile}"/>
-                        <Button 
-                                Margin="4,0,0,0" 
-                                Content="Delete"
-                                Style="{StaticResource OrangeBTNStile}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0 2">
-                            <TextBlock Text="Измерение - осциллограф"
-                                       HorizontalAlignment="Center" 
-                                       VerticalAlignment="Center" />
-                        <Button Margin="35,0,0,0"
-                                HorizontalAlignment="Right" 
-                                Content="Add"
-                                Style="{StaticResource OrangeBTNStile}"/> 
-                        <Button HorizontalAlignment="Right" 
-                                Margin="4,0,0,0" 
-                                Content="Delete"
-                                Style="{StaticResource OrangeBTNStile}"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0 2" >
-                        <TextBlock Text="Измерение - анализатор спекта" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        <Button Margin="5,0,0,0"
-                                HorizontalAlignment="Right" 
-                                Content="Add"
-                                Style="{StaticResource OrangeBTNStile}"/>
-                        <Button HorizontalAlignment="Right" 
-                                Margin="4,0,0,0" 
-                                Content="Delete"
-                                Style="{StaticResource OrangeBTNStile}"/>
-                    </StackPanel>
-                </TreeViewItem>
-                </TreeView>
-            </Grid>
-            <Grid Grid.Row="1"
-                  >
-                <GroupBox
-                 Header="Описание:"
-                 Margin="2 15">
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <StackPanel Orientation="Horizontal" Height="30" >
+                                <TextBlock Margin="10 0" Text="Enabled" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="EnableComboBox"
+                                         Margin="5 0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <StackPanel Orientation="Horizontal" Height="30" >
+                                <TextBlock Margin="10 0" Text="Enabled" VerticalAlignment="Center"/>
+                                <ComboBox IsEditable="False"
+                                          VerticalAlignment="Center"
+                                          VerticalContentAlignment="Stretch"
+                                          Width="200"
+                                          
+                                          IsEnabled="{Binding IsChecked, ElementName=EnableComboBox}"
+                                          >
+                                    <ComboBoxItem>Не установлен</ComboBoxItem>
+                                    <ComboBoxItem>Пропустить</ComboBoxItem>
+                                    <ComboBoxItem>Сбой</ComboBoxItem>
+                                    <ComboBoxItem>Прервать</ComboBoxItem>
+                                    <ComboBoxItem>Ошибка</ComboBoxItem>
 
-                    <Grid Width="auto"
-                          Height="50" VerticalAlignment="Top"
-                          >
-                        <TextBlock x:Name="First" 
-                                    Text="Генерация импульса. Подключите генератор в розетку и нажмите кноку Вкл. "
-                                   Visibility="Visible" VerticalAlignment="Top" FontSize="10"
-                                   TextWrapping="Wrap"/>
-                 
-                        <TextBlock x:Name="Second" 
-                                   Text="Источник питания. Сходи в холодильник и  дастань себе еду. Если еды нет закажи доставку из магазина. "
-                                   Visibility="Hidden"
-                                   TextWrapping="Wrap"/>
+                                </ComboBox>
+
+
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <StackPanel>
+                                <Expander
+                                HorizontalAlignment="Stretch"
+                                Header="Откро меня! Нажми на стрелку \/"
+                                Foreground="BlueViolet">
+                                    <!--ExpandDirection="Right">-->
+                                    <ListView>
+                                        <ListViewItem>
+                                            <StackPanel Orientation="Horizontal" Height="30" >
+                                                <TextBlock Margin="10 0" Text="Enabled" VerticalAlignment="Center"/>
+                                                <CheckBox x:Name="Enable_2_ComboBox" 
+                                                    Margin="5 0" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </ListViewItem>
+                                        <ListViewItem>
+                                            <StackPanel Orientation="Horizontal" Height="30">
+                                                <TextBlock Margin="10 0" Text="Имя" VerticalAlignment="Center"/>
+                                                <TextBox Width="120" 
+                                                     Margin="5 0" 
+                                                     VerticalAlignment="Center"
+                                                     Text="Первый тест"
+                                                     IsEnabled="{Binding IsChecked, ElementName=Enable_2_ComboBox}"/>
+                                            </StackPanel>
+                                        </ListViewItem>
+
+                                        <ListViewItem>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Margin="10 0" Text="Имя" VerticalAlignment="Center"/>
+                                                <ComboBox IsEditable="False"
+                                                          VerticalAlignment="Center"
+                                                          VerticalContentAlignment="Stretch"
+                                                          Width="200"
+                                                          
+                                                          IsEnabled="{Binding IsChecked, ElementName=Enable_2_ComboBox}"
+                                                          >
+                                                    <ComboBoxItem>Не установлен</ComboBoxItem>
+                                                    <ComboBoxItem>Пропустить</ComboBoxItem>
+                                                    <ComboBoxItem>Сбой</ComboBoxItem>
+                                                    <ComboBoxItem>Прервать</ComboBoxItem>
+                                                    <ComboBoxItem>Ошибка</ComboBoxItem>
+
+                                                </ComboBox>
+                                            </StackPanel>
+                                        </ListViewItem>
+
+                                    </ListView>
+                                </Expander>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <StackPanel Background="Gray">
+                                <Expander
+                                HorizontalAlignment="Stretch"
+                               
+                                Foreground="BlueViolet">
+                                    <!--ExpandDirection="Right">-->
+                                    <Expander.Header>
+                                        <StackPanel Background="#FFDDDFEC" >
+                                            <TextBlock Text="Нажми и откроется//нажими еще рази и закроется"
+                                                       VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Expander.Header>
+                                    <StackPanel Orientation="Vertical"
+                                            TextBlock.Foreground="BlueViolet"
+                                            >
+                                        <TextBlock Text="Your Content" Foreground="BlueViolet"/>
+                                        <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                               Foreground="BlueViolet"
+                                               TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </Expander>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <StackPanel>
+                                <CheckBox x:Name="M_CheckBox"
+                                          IsChecked="True"
+                                          Margin="32,0,0,8"
+                                          Content="Enabled"/>
+
+                                <TextBox Margin="32,0,0,0"
+                                         VerticalAlignment="Top"
+                                         Height="100"
+                                         AcceptsReturn="True"
+                                         TextWrapping="Wrap"
+                                         VerticalScrollBarVisibility="Auto"
+                                         Text="This is a text area"
+                                         IsEnabled="{Binding Path=IsChecked , ElementName=M_CheckBox}" />
+                            </StackPanel>
+
+                        </ListViewItem>
+
+                        </ListView>
                     </Grid>
+                </Grid>
+            </Border>
 
-                </GroupBox>
-            </Grid>
-            
         </Grid>
-        <!--#endregion-->
-        <!--region-->
+            <!--#endregion-->
+
+
+        <!--region _TreeView_  -->
         <Border Grid.Column="1" CornerRadius="10 0 0 10" BorderBrush="Blue" Margin="10 20 20 20" BorderThickness="2" />
         <Grid Grid.Column="1"
               Margin="30">
@@ -306,7 +577,7 @@
                             <StackPanel Orientation="Horizontal" Margin="0 2">
                                 <TextBlock Text="Генерация импульса"
                                    HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center" MouseDown="TextBlock_MouseDown" />
+                                   VerticalAlignment="Center"  />
                                 <Button Margin="67,0,0,0"
                                 HorizontalAlignment="Right" 
                                 Content="Add"
@@ -319,7 +590,7 @@
                             <StackPanel Orientation="Horizontal" Margin="0 2" >
                                 <TextBlock Text="Источник питания"
                                    HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"  MouseDown="TextBlock_MouseDown_1" />
+                                   VerticalAlignment="Center" />
                                 <Button Margin="80,0,0,0"
                                 HorizontalAlignment="Right" 
                                 Content="Add"
@@ -371,10 +642,7 @@
                     </TreeView>
                 <GroupBox Header="Описание:"
                           Margin="2 15" 
-                          VerticalAlignment="Bottom" HorizontalAlignment="Center"
-                          
-                          
-                          >
+                          VerticalAlignment="Bottom" HorizontalAlignment="Center"  >
 
                     <Grid Width="auto"
                           Height="50">
